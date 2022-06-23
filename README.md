@@ -4,6 +4,8 @@
 ## Usage 
 For evaluating putative pockets in PQR or OFF format:
 
+If OFF format, the participant must provide in the working directory a "testData" folder containing the structures in OFF format.
+
 python3 evaluate.py \<directoryName containing participant results\>
 
 Change in the script the fields 
