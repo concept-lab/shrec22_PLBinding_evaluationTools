@@ -2,9 +2,10 @@
  Evalutaion tools of the Shrec 2022  contest on protein-ligand binding site recognition
 
 ## Usage 
-For evaluating putative pockets in PQR or OFF format:
+For evaluating putative pockets in PQR or as a boolean map for the vertices of the structure OFF format (TXT file):
 
-If OFF format, the participant must provide in the working directory a "testData" folder containing the structures in OFF format.
+If OFF format, in the working directory the "testData" folder must be present. This folder contains the structures in OFF format.
+It can be downloaded from https://github.com/concept-lab/shrec22_proteinLigandBenchmark.git
 
 python3 evaluate.py \<directoryName containing participant results\>
 
