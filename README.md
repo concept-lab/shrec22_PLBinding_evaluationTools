@@ -18,7 +18,10 @@ to change the metric's threshold for the evaluation of a putative binding site(\
 *rankStats.txt*: file containing the ranking result (Top1, Top3, Top10 and metrics--LC and PC score as described in\*)
 
 *failureList.txt*: file containing the list of structure-ligands pairs not matched by any of the putative pockets.
+### Example
+python3 evaluate.py examples/pqr
 
+Evaluates the method M3 - DeepSurf to reproduce the 3rd line of Table 1 in \*
 ### NOTE
 The full database and PQR structure files of the contest is provided in https://github.com/concept-lab/shrec22_proteinLigandBenchmark.git
 
