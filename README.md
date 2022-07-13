@@ -39,8 +39,18 @@ to change the metric's threshold for the evaluation of a putative binding site(\
 python3 evaluate.py examples/pqr
 
 Evaluates the method M3 - DeepSurf to reproduce the 3rd line of Table 1 in \*
+
+### Generation of complete set of results for "SHREC 2022: Protein-ligand binding site recognition" benchark
+
+Download from https://github.com/concept-lab/shrec22_proteinLigandBenchmark.git the *participantResults* folder, and run for each participant the evaluation script as described above in the example.
+
+
 ### NOTE
 The full database and PQR structure files of the contest is provided in https://github.com/concept-lab/shrec22_proteinLigandBenchmark.git
 
+### Full paper
+
+https://arxiv.org/pdf/2206.06035.pdf
+
 ### Cite
-(*) L. Gagliardi et al, SHREC 2022: Protein-ligand binding site recognition, *Computers & Graphics* [doi to be added] (2022
+(*) L. Gagliardi et al, SHREC 2022: Protein-ligand binding site recognition, *Computers & Graphics* https://doi.org/10.1016/j.cag.2022.07.005 (2022)
