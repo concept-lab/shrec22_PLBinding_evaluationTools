@@ -49,7 +49,7 @@ Download from https://github.com/concept-lab/shrec22_proteinLigandBenchmark.git 
 | method              | Top1 | Top3 | Top10| LC   | PC   | nPockets |
 |---------------------|------|------|------|------|------|----------|
 |M1--Point Transformer| 69.1 | 75.9 | 75.9 | 96.4 | 60.4 | 2.1 |
-|M2--GNN-Pocket       | 53.4 | 54.6 | 55.4 | 94.7 | 47.5 | 1.9 |
+|M2--GNN-Pocket       | 53.4 | 54.6 | 55.4 | 93.7 | 47.5 | 1.9 |
 |M3--DeepSurf         | 87.6 | 89.2 | 89.2 | 95.0 | 67.9 | 1.6 |
 |M4--NS-Volume        | 59.0 | 76.7 | 83.9 | 88.8 | 74.8 | 11.6 |
 | | | | | | | | 
