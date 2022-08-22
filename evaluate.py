@@ -387,11 +387,7 @@ def main():
     noHitMap=[]
     structureCounter = 0
     for fn in folderNumber:
-        
-        # #DEBUG
-        # if(structureCounter==3):
-        #     break
-        
+
         structureCounter +=1
 
         number = int(fn[0])
@@ -407,6 +403,10 @@ def main():
         for ln in ligands:
             ligandCoords.append(readLigand(ln,pqrName))
         nLigands = len(ligandCoords)
+
+        if nLigands==0:
+            structureCounter-=1
+
         pList = readP(inFile,isPQR,'testData/'+str(number)) #last argument useful only if triangulation has to be read
         nPockets += len(pList)
         r = 0 #RANKING POSITION
@@ -414,20 +414,24 @@ def main():
 
         #RANKING LOOP WITHIN A STRUCTURE
         nHits = 0
-        hitLig = np.zeros(nLigands) #keeps trace of which ligand has been hit
+        hitLig = set() #keeps trace of which ligand has been hit
+        hitMap =np.zeros(nLigands)
         for pn,pcoord in enumerate(pList):
             gotHIT=False
-            for ind,ln in enumerate(ligands):
-                # print("LIGAND:  ",ln)
+            for ind in range(nLigands):
+                if ind in hitLig:
+                    print("already hit ligand")
+                    continue
                 lcoord = ligandCoords[ind]
                 LC,PC = getClose(lcoord,pcoord,isPQR) 
-                if((np.round(LC,2)>=lCoverageTH)and(np.round(PC,2)>=pCoverageTH)):
+                if((np.round(LC,2)>=lCoverageTH) and (np.round(PC,2)>=pCoverageTH)):
                     print("pocket %d hit!"%(pn+1))
                     print("LC=%.3f\tPC=%.3f"%(LC,PC))
                     gotHIT = True
                     nHits+=1
+                    hitLig.add(ind)
                     if(r<10):
-                        hitLig[ind] = 1
+                        hitMap[ind] = 1
                         hitTop10+=1
                         counterLC += LC
                         counterPC += PC
@@ -440,13 +444,13 @@ def main():
                 break
             if (not gotHIT):
                 r+=1 #COUNTS MISSING 
-            if (nHits==nLigands):
+            if (nHits>=nLigands):
                 print("All ligands found")
                 break
         if (nHits<nLigands):
             print("NOT all ligands found")
-            for ln,hitMap in enumerate(hitLig):
-                if(hitMap==0):
+            for ln,value in enumerate(hitMap):
+                if(value==0):
                     noHitMap.append([pqrName+': '+str(ligands[ln])])
         
         #COMPUTE (current) AVERAGES
@@ -463,6 +467,7 @@ def main():
     print("Analysis over")
     print("Averages: top1 = %.2f\ttop3 = %.2f\ttop10 = %.2f\taverageLC = %.2f\taveragePC = %.2f"
         %(np.round(avHitTop1,4)*100,np.round(avHitTop3,4)*100,np.round(avHitTop10,4)*100,np.round(avLC,4)*100,np.round(avPC,4)*100))
+    print("Average number of pockets: ", np.round(avNpockets,1))
     print("NORM = ", norm)
     print("Strucures considered: ",structureCounter)
     #PRINT ON FILES
