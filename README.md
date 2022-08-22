@@ -44,6 +44,19 @@ Evaluates the method M3 - DeepSurf to reproduce the 3rd line of Table 1 in \*
 
 Download from https://github.com/concept-lab/shrec22_proteinLigandBenchmark.git the *participantResults* folder, and run for each participant the evaluation script as described above in the example.
 
+**Note**: In the paper method 4 (NS-Volume) and the benchmark Fpocket have a rounding up of the evaluation scores at their advantage (neverthless, not relevant for the conclusions traced by the paper). With the same conditions of all methods the full comparative table is:
+
+| method              | Top1 | Top3 | Top10| LC   | PC   | nPockets |
+|---------------------|------|------|------|------|------|----------|
+|M1--Point Transformer| 69.1 | 75.9 | 75.9 | 96.4 | 60.4 | 2.1 |
+|M2--GNN-Pocket       | 53.4 | 54.6 | 55.4 | 94.7 | 47.5 | 1.9 |
+|M3--DeepSurf         | 87.6 | 89.2 | 89.2 | 95.0 | 67.9 | 1.6 |
+|M4--NS-Volume        | 59.0 | 76.7 | 83.9 | 88.8 | 74.8 | 11.6 |
+| | | | | | | | 
+|Fpocket              | 60.2 | 75.1 | 84.7 | 92.5 | 64.7 | 8.9 |
+    
+    
+
 
 ### NOTE
 The full database and PQR structure files of the contest is provided in https://github.com/concept-lab/shrec22_proteinLigandBenchmark.git
